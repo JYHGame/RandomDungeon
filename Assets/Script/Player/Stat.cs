@@ -4,19 +4,19 @@ using static UnityEngine.Rendering.DebugUI;
 [System.Serializable]
 public class Stat
 {
-    [SerializeField] 
-    private string statName;
-    [SerializeField] 
+    [SerializeField]
+    private StatType statName;
+    [SerializeField]
     private int statValue;
 
-    public string StatName => statName;
+    public StatType StatName => statName;
     public int Value
     {
         get => statValue;
         set => statValue = value;
     }
 
-    public Stat(string name, int startValue = 0)
+    public Stat(StatType name, int startValue = 0)
     {
         statName = name;
         statValue = startValue;

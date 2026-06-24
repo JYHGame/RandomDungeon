@@ -176,10 +176,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uCE90\uB9AD\uD130 \uC0DD\uC131"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad9fbd19942df93439951a2f73d04ab6, type: 2}
+  m_sharedMaterial: {fileID: -2318844150996614072, guid: ad9fbd19942df93439951a2f73d04ab6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a016b1b60b482e742af6b43f5ebd228b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  myStats: []
+  playerStat: []
 --- !u!1 &1132056843
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,15 +678,31 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1132056845}
-  - component: {fileID: 1132056844}
+  - component: {fileID: 1132056846}
+  - component: {fileID: 1132056847}
   m_Layer: 0
-  m_Name: System
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1132056844
+--- !u!4 &1132056845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132056843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132056846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -697,29 +713,34 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a3f8140075dc6944be058d88910d591, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerRendomStatSystem
-  totalStatPoints: 100
-  statTypes:
-  - Health
-  - Power
-  - Speed
-  - Luck
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRandomStatSystem
+  totalStatPoints: 20
+  statTypes: 00000000010000000200000003000000
   targetCharacter: {fileID: 1115549532}
---- !u!4 &1132056845
-Transform:
+--- !u!114 &1132056847
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132056843}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500.68292, y: 249.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ccd170a4c501844da648347dfc9eeb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonCreator
+  monsterDatabase:
+  - level: 1
+    monsters:
+    - {fileID: 11400000, guid: f5cc421219e1d8849a2e14debaa89866, type: 2}
+    - {fileID: 11400000, guid: a4972539d0281164a894c94621b962c8, type: 2}
+    - {fileID: 11400000, guid: 5244f601744cbf44abeaf702d5149692, type: 2}
+  - level: 2
+    monsters:
+    - {fileID: 11400000, guid: f5cc421219e1d8849a2e14debaa89866, type: 2}
+    - {fileID: 11400000, guid: a4972539d0281164a894c94621b962c8, type: 2}
+    - {fileID: 11400000, guid: 5244f601744cbf44abeaf702d5149692, type: 2}
+  stageBlueprints: []
 --- !u!1 &1252405506
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,8 +903,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1132056844}
-        m_TargetAssemblyTypeName: PlayerRendomStatSystem, Assembly-CSharp
+      - m_Target: {fileID: 1132056846}
+        m_TargetAssemblyTypeName: PlayerRandomStatSystem, Assembly-CSharp
         m_MethodName: OnClickGenerateCharacter
         m_Mode: 1
         m_Arguments:
